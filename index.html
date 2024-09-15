@@ -1,37 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TODO List</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Custome JavaScript -->
     <script src="script.js" defer></script>
-    <!-- font-family (Dosis) for content -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis&display=swap" rel="stylesheet">
-    <!-- font-family (Nerko One) for heading text -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Nerko+One&display=swap" rel="stylesheet">
-    <!-- font awesome cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- jQuery cdn w3school -->
+    
+    <!-- Font-family (Dosis) for content -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Font-family (Nerko One) for heading text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dosis&family=Nerko+One&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    
+    <!-- jQuery CDN from W3Schools -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-</head>
-<body>
+  </head>
+
+  <body>
     <div class="container">
-        <div class="header">TODO LIST</div>
-        <div class="search">
-            <div class="search-bar"><input type="text" name="" id="textInput" autofocus></div>
-            <div class="search-button"><button id="add">Add</button></div>
+      <div class="header">TODO LIST</div>
+      
+      <div class="search">
+        <div class="search-bar">
+          <input type="text" id="textInput" autofocus />
         </div>
-        <div class="list"></div>
-        <div class="footer">
-            <div class="count"></div>
-            <div class="clear"><button>Clear All</button></div>
+        <div class="search-button">
+          <button id="add-button">Add</button>
         </div>
+      </div>
+
+      <div class="search-error">Item already exists in your to-do list. Please enter a new task.</div>
+      
+      <div class="list"></div>
+      
+      <div class="footer">
+        <div class="count"></div>
+        <div class="clear">
+          <button>Clear All</button>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

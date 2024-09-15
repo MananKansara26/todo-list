@@ -1,79 +1,98 @@
-let addButton = document.getElementById("add"),
-textInput = document.getElementById("textInput");
+// display todo list item from the local storage
+function displayItem() {
+  const todo = localStorage.getItem("todo");
+  const todoArray = JSON.parse(todo);
 
-function displayItem()
-{
-    let todo = localStorage.getItem("todo"),
-    todoArray = JSON.parse(todo);
+  let content = "";
+  if (todo) {
+    // todo list has items
+    todoArray.forEach((element) => {
+      content += `<div class="item"><span class="text">${element}</span><span class="delete-button fa-sharp fa-solid fa-trash"></span></div>`;
+    });
+    // Update the count using jQuery
+    $(".count").html(`You have ${todoArray.length} pending tasks`);
+  } else {
+    // todo list is blank
+    content += `<div class="item">There is no item in todo list</div>`;
+    // Clear the count using jQuery
+    $(".count").html("");
+  }
 
-    let content = "";
-    if(todo)
-    {
-        todoArray.forEach(function(element){
-            content += `<div class="item"><span class="text">${element}</span><span class="fa-sharp fa-solid fa-trash"></span></div>`;
-        })
-        document.querySelector('.count').innerHTML = `You have ${todoArray.length} pending tasks`;
-    }
-    else
-    {
-        content += `<div class="item">There is no item in todo list</div>`;
-        document.querySelector('.count').innerHTML = ``;
-    }
-    
-    document.querySelector(".list").innerHTML = content;
-
+  // Display the todo list content using jQuery
+  $(".list").html(content);
 }
 
+$(document).ready(function () {
+  // display todo list
+  displayItem();
 
-addButton.addEventListener("click", () => {
-    let todo = localStorage.getItem("todo"),
-    text = textInput.value.trim();
-
+  // add click event listner on add button
+  $(document).on("click", "#add-button", function () {
+    // get todo list items from the local storage
+    const todo = localStorage.getItem("todo");
     let todoArray = JSON.parse(todo);
-    
-    if(todoArray)
-    {
-        todoArray.push(text);
+
+    const text = $("#textInput").val().trim();
+    if (!text) return;
+
+    if (todoArray) {
+      const itemExists = todoArray.some((todo) => todo === text);
+      if (itemExists) {
+        console.log("item already exist");
+        $(".search-error").show().delay(2000).fadeOut();
+        return;
+      }
+      // append item into todo list
+      todoArray.push(text);
+    } else {
+      // create todo list with item
+      todoArray = [];
+      todoArray.push(text);
     }
-    else
-    {
-        todoArray = [];
-        todoArray.push(text);
+
+    // update todo list value
+    localStorage.setItem("todo", JSON.stringify(todoArray));
+
+    // set input field blank
+    $("#textInput").val("");
+
+    // display the updated list
+    displayItem();
+  });
+
+  // add click event listner on delete button
+  $(document).on("click", ".delete-button", function () {
+    // get the text of the div when its associated delete button is clicked
+    const text = $(this).siblings(".text").html();
+
+    // get todo list items from the local storage
+    const todo = localStorage.getItem("todo");
+    const todoArray = JSON.parse(todo);
+
+    // get index of div when its associated delete button is clicked
+    const index = todoArray.indexOf(text);
+
+    // remove the item from the array
+    todoArray.splice(index, 1);
+
+    if (todoArray.length === 0) {
+      // todo list is blank
+      localStorage.removeItem("todo");
+    } else {
+      // update todo list items
+      localStorage.setItem("todo", JSON.stringify(todoArray));
     }
-    localStorage.setItem("todo",JSON.stringify(todoArray));
-    location.reload();
+
+    // display updated todo list
     displayItem();
-});
+  });
 
+  // add click event listner on delete button
+  $(document).on("click", ".clear", function () {
+    // clear local storage
+    localStorage.removeItem("todo");
 
-$(document).ready(function() {
-
+    // display updated todo list
     displayItem();
-
-    $('.fa-sharp').click(function(){
-        // console.log($(this).siblings('.text')[0].innerHTML);
-        let text = $(this).siblings('.text')[0].innerHTML;
-
-        let todo = localStorage.getItem("todo"),
-        todoArray = JSON.parse(todo);
-
-        let index = todoArray.indexOf(text);
-        console.log(index);
-
-        todoArray.splice(index,1);
-
-        if(todoArray.length == 0)
-        {
-            localStorage.removeItem('todo');
-        }
-        else
-        {   
-            localStorage.setItem("todo",JSON.stringify(todoArray));
-        }
-        location.reload();
-        displayItem();
-        
-    });
+  });
 });
-
-
