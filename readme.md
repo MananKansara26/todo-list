@@ -16,6 +16,6 @@ A simple and intuitive to-do list application built with HTML, CSS, and JavaScri
 - **JavaScript**: Interactivity and local storage management.
 - **jQuery**: Simplified DOM manipulation and event handling.
 - **Font Awesome**: Icons for user interface.
-- 
+ 
 ## Live Demo
 You can view a live version of this project hosted on GitHub Pages [here](https://manankansara26.github.io/todo_list/).
