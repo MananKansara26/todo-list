@@ -18,4 +18,4 @@ A simple and intuitive to-do list application built with HTML, CSS, and JavaScri
 - **Font Awesome**: Icons for user interface.
  
 ## Live Demo
-You can view a live version of this project hosted on GitHub Pages [here](https://manankansara26.github.io/todo_list/).
+You can view a live version of this project hosted on GitHub Pages [here](https://manankansara26.github.io/todo-list/).
